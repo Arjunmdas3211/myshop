@@ -5,6 +5,7 @@ import { auth } from "./../../firebase/firebase.utils";
 import './header.styles.scss';
 import {ReactComponent as Logo} from './../../assets/crown.svg'
 
+// eslint-disable-next-line react/prop-types
 const Header = ({ currentUser }) => (
     <div className='header'>
      <Link className='logo-container' to='/'>

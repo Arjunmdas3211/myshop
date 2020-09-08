@@ -6,22 +6,42 @@ import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/Sing-In-Sign-Up/Sing-In-Sign-Up.component';
 
 
-
+import {auth } from "./firebase/firebase.utils"; 
 
 import './App.css';
-function App() {
-  return (
+class  App extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      currentUser:null
+    }
+  }
+  unsubscribeFromAuth = null;
+
+  componentDidMount(){
+   this.unsubscribeFromAuth = auth.onAuthStateChanged(user =>{
+      this.setState({ currentUser:user});
+
+    });
+  }
+  componentWillUnmount(){
+    this.unsubscribeFromAuth(); 
+  }
+   render(){
+    return (
     
-    <div>
-    <Header />
-      <Switch>
-      
-        <Route exact path='/' component={HomePage} />
-        <Route path='/shop' component={ShopPage}/>
-        <Route path='/signin' component={SignInAndSignUpPage}/>
-      </Switch>
-    </div>
-  );
+      <div>
+      <Header  currentUser={this.state.currentUser}/>
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage}/>
+          <Route path='/signin' component={SignInAndSignUpPage}/>
+        </Switch>
+      </div>
+    );
+  }
+
 }
 
 export default App;

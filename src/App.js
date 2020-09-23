@@ -10,6 +10,8 @@ import SignInAndSignUpPage from './pages/Sing-In-Sign-Up/Sing-In-Sign-Up.compone
 import {auth, createUserProfileDocument } from './firebase/firebase.utils'; 
 
 import './App.css';
+import './normalize.css';
+
 import { setCurrentUser } from './redux/user/user.action';
 
 

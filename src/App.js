@@ -20,7 +20,11 @@ import { setCurrentUser } from "./redux/user/user.action";
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
+<<<<<<< HEAD
   componentDidMount() {
+=======
+  componentDidMount = () => {
+>>>>>>> ccf1b9c86b039db7256a5d89e55297056a33e6f8
     const { setCurrentUser } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -36,10 +40,16 @@ class App extends React.Component {
 
       setCurrentUser(userAuth);
     });
-  }
+  };
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
+<<<<<<< HEAD
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+=======
+>>>>>>> ccf1b9c86b039db7256a5d89e55297056a33e6f8
   render() {
     return (
       <div>

@@ -18,8 +18,17 @@ import './normalize.css';
 import { setCurrentUser } from './redux/user/user.action';
 
 class App extends React.Component {
+<<<<<<< HEAD
   //new code without componentWillmount() & unsubscribeFromAuth
+=======
+  unsubscribeFromAuth = null;
+
+<<<<<<< HEAD
+  componentDidMount() {
+=======
+>>>>>>> 38cb01f339578bfa9e20d84845a23831d83b1785
   componentDidMount = () => {
+>>>>>>> ccf1b9c86b039db7256a5d89e55297056a33e6f8
     const { setCurrentUser } = this.props;
     auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -35,7 +44,19 @@ class App extends React.Component {
       setCurrentUser(userAuth);
     });
   };
+<<<<<<< HEAD
 
+=======
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+<<<<<<< HEAD
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+=======
+>>>>>>> ccf1b9c86b039db7256a5d89e55297056a33e6f8
+>>>>>>> 38cb01f339578bfa9e20d84845a23831d83b1785
   render() {
     return (
       <div>

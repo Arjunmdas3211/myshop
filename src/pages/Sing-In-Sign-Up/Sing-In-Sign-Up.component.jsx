@@ -10,5 +10,8 @@ const SignInAndSignUpPage = () => (
     <SignUp />
   </div>
 );
+<<<<<<< HEAD
+=======
 
+>>>>>>> ccf1b9c86b039db7256a5d89e55297056a33e6f8
 export default SignInAndSignUpPage;

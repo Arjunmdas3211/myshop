@@ -1,28 +1,27 @@
-import React from "react";
-import HomePage from "../src/pages/homepage/homepage.component";
-import { Switch, Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import ShopPage from "./pages/shop/shop.component";
-import Header from "./components/header/header.component";
-import SignInAndSignUpPage from "./pages/Sing-In-Sign-Up/Sing-In-Sign-Up.component";
-import CheckOutPage from "./pages/checkout/checkout.component";
+import React from 'react';
+import HomePage from '../src/pages/homepage/homepage.component';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import ShopPage from './pages/shop/shop.component';
+import Header from './components/header/header.component';
+import SignInAndSignUpPage from './pages/Sing-In-Sign-Up/Sing-In-Sign-Up.component';
+import CheckOutPage from './pages/checkout/checkout.component';
 
-import { selectCurrentUser } from "./redux/user/user.selectors";
+import { selectCurrentUser } from './redux/user/user.selectors';
 
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
-import "./App.css";
-import "./normalize.css";
+import './App.css';
+import './normalize.css';
 
-import { setCurrentUser } from "./redux/user/user.action";
+import { setCurrentUser } from './redux/user/user.action';
 
 class App extends React.Component {
-  unsubscribeFromAuth = null;
-
+  //new code without componentWillmount() & unsubscribeFromAuth
   componentDidMount = () => {
     const { setCurrentUser } = this.props;
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -33,13 +32,10 @@ class App extends React.Component {
           });
         });
       }
-
       setCurrentUser(userAuth);
     });
   };
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
+
   render() {
     return (
       <div>
@@ -51,13 +47,7 @@ class App extends React.Component {
           <Route
             exact
             path="/signin"
-            render={() =>
-              this.props.currentUser ? (
-                <Redirect to="/" />
-              ) : (
-                <SignInAndSignUpPage />
-              )
-            }
+            render={() => (this.props.currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />)}
           />
         </Switch>
       </div>

@@ -19,6 +19,7 @@ import { setCurrentUser } from './redux/user/user.action';
 
 class App extends React.Component {
   componentDidMount() {
+    this._isMounted = true;
     const { setCurrentUser } = this.props;
     auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -33,6 +34,9 @@ class App extends React.Component {
       }
       setCurrentUser(userAuth);
     });
+  }
+  componentWillUnmount() {
+    this._isMounted = false;
   }
   render() {
     return (

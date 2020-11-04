@@ -12,8 +12,8 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
-import './App.css';
 import './normalize.css';
+import { GlobalStyles } from './global.styles';
 
 import { setCurrentUser } from './redux/user/user.action';
 
@@ -36,6 +36,7 @@ const App = ({ currentUser, setCurrentUser }) => {
 
   return (
     <div>
+      <GlobalStyles />
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />

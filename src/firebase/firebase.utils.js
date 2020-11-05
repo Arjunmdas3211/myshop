@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 const config = {
-  apiKey: 'AIzaSyD58h2trFLWYO2MbCoPI7Jdh7ku1jcURR8',
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: 'myshop-db-1b6b9.firebaseapp.com',
   databaseURL: 'https://myshop-db-1b6b9.firebaseio.com',
   projectId: 'myshop-db-1b6b9',

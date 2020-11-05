@@ -10,6 +10,8 @@
 /.log
 /.env
 /.lock
+/amplify.yml
+
 # production
 /build
 

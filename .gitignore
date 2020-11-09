@@ -11,6 +11,11 @@
 /.env
 /.lock
 /amplify.yml
+/package-lock.json
+/debug.log
+/.prettierrc
+/.editorconfig
+/README.md
 
 # production
 /build
